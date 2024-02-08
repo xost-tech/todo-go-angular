@@ -1,10 +1,19 @@
 package main
 
 import (
-	"todo-go-angular/server/models"
+	"todo-go-angular/server/api/routes"
+	"todo-go-angular/server/database"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	models.InitDB()
-	defer models.CloseDB()
+	database.InitDB()
+	defer database.CloseDB()
+
+	router := gin.Default()
+
+	routes.SetupTaskRoutes(router.Group("/api"))
+
+	router.Run(":9090")
 }
