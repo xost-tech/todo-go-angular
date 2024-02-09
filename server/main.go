@@ -17,6 +17,7 @@ func main() {
 	router.Use(middleware.CORSMiddleware())
 
 	routes.SetupTaskRoutes(router.Group("/api"))
+	routes.SetupCategoryRoutes(router.Group("/api"))
 
 	router.Run(":8080")
 }
