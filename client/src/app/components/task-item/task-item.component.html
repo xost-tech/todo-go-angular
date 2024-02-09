@@ -1,0 +1,6 @@
+<div class="task" [ngClass]="{'pending': task.task_status === 0, 'inprogress': task.task_status === 1, 'completed': task.task_status == 2}" 
+(dblclick)="onUpdateStatus(task)">
+    <h3>{{ task.task_name }} <fa-icon (click)="onDelete(task)" [ngStyle]="{ color : 'red'}" [icon]="faTimes"></fa-icon></h3>
+    <p>{{ task.task_description }}</p>
+    <p>{{ task.due_date }}</p>
+</div>

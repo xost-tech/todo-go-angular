@@ -1,0 +1,21 @@
+<form *ngIf="showAddTask" class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="task_name">Task Name *</label>
+        <input type="text" name="task_name" [(ngModel)]="task_name" id="task_name" placeholder="Add Task Name" required />
+    </div>
+    <div class="form-control">
+        <label for="task_description">Task Description</label>
+        <textarea name="task_description" [(ngModel)]="task_description" id="task_description" placeholder="Add Task Description"></textarea>
+    </div>
+    <div class="form-control">
+        <label for="category_id">Task Category *</label>
+        <select name="category_id" [(ngModel)]="category_id" id="category_id" required>
+            <option *ngFor="let category of categories" [value]="category.category_id">{{ category.category_name }}</option>
+        </select>
+    </div>
+    <div class="form-control">
+        <label for="due_date">Due Date *</label>
+        <input type="date" name="due_date" [(ngModel)]="due_date" id="due_date" required/>
+    </div>
+    <input type="submit" value="Save Task" class="btn btn-block">
+</form>
