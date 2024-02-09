@@ -1,6 +1,7 @@
 package main
 
 import (
+	"todo-go-angular/server/api/middleware"
 	"todo-go-angular/server/api/routes"
 	"todo-go-angular/server/database"
 
@@ -13,7 +14,9 @@ func main() {
 
 	router := gin.Default()
 
+	router.Use(middleware.CORSMiddleware())
+
 	routes.SetupTaskRoutes(router.Group("/api"))
 
-	router.Run(":9090")
+	router.Run(":8080")
 }
